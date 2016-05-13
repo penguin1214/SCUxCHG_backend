@@ -15,7 +15,14 @@ class Test(Resource):
         #printing request.data works
         json_data = request.get_json(force=True)
         print json_data
-        entity = baseEntity(json_data['name'])
+        print type(json_data['array'])
+        arrstr = json.dumps(json_data['array'])
+        entity = baseEntity(json_data['name'], arrstr)
         db.session.add(entity)
         db.session.commit()
         return {"result": "success"}
+
+    def get(self):
+        array = db.session.query(baseEntity).filter(baseEntity.id == 1).first().array
+        data = json.loads(array)
+        return data
