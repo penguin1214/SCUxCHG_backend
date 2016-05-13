@@ -10,7 +10,3 @@ app = Flask(__name__)
 app.config.from_object("config")
 api = Api(app)
 db = SQLAlchemy(app)
-
-import models
-db.create_all()
-

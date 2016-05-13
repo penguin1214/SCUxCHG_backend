@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from flask import request, json
-from app import app, api
+from app import app, api, db
 from flask_restful import Resource, Api
+from models import *
 
 class HelloWorld(Resource):
     def get(self):
@@ -14,4 +15,7 @@ class Test(Resource):
         #printing request.data works
         json_data = request.get_json(force=True)
         print json_data
+        entity = baseEntity(json_data['name'])
+        db.session.add(entity)
+        db.session.commit()
         return {"result": "success"}
