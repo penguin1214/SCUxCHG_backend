@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 from app import app, api
-from app.api import HelloWorld, TodoSimple, Test
+from app.api import HelloWorld, Test
 
 api.add_resource(HelloWorld, '/')
-api.add_resource(TodoSimple, '/<string:todo_id>')
 api.add_resource(Test, '/test')
 
 if __name__ == '__main__':

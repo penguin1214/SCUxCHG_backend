@@ -2,7 +2,15 @@
 #initialization
 from flask import Flask
 from flask_restful import Resource, Api
+from flask_sqlalchemy import SQLAlchemy
+
+import config
 
 app = Flask(__name__)
+app.config.from_object("config")
 api = Api(app)
+db = SQLAlchemy(app)
+
+import models
+db.create_all()
 
