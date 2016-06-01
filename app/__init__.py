@@ -9,7 +9,7 @@ import config
 app = Flask(__name__)
 app.config.from_object("config")
 api = Api(app)
-db = SQLAlchemy(app)
+db = SQLAlchemy(app, use_native_unicode="utf8")
 
-# import models
-# db.create_all()
+import models
+db.create_all()
